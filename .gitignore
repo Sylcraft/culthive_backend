@@ -1,0 +1,17 @@
+# Ignore node_modules dans backend et frontend
+/backend/node_modules/
+/frontend/node_modules/
+
+/node_modules/
+
+# Ignore les fichiers d'environnement
+.env
+
+# Ignore dockerignore 
+.dockerignore 
+
+# Ignore les fichiers de logs
+*.log
+
+# Ignore les fichiers de système
+.DS_Store
