@@ -39,7 +39,7 @@ app.use(
   })
 );
 
-app.options('*', cors()); // Cela permet de gérer les requêtes preflight
+app.options('*', cors());
 
 app.use(express.json()); // Middleware pour parser le corps en JSON
 
@@ -52,6 +52,10 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/search", searchRoutes);
 app.use("/api/stripe", stripeRoutes);
 app.use("/api/admin", adminRoutes);
+
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Backend is running' });
+});
 
 
 // Définition du port du serveur, soit celui dans le fichier .env ou 3000 par défaut
