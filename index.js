@@ -17,13 +17,11 @@ const adminRoutes = require("./routes/adminRoutes");
 
 // CORS pour autoriser les requêtes entre le frontend et le backend
 const cors = require("cors");
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001" || "https://culthivefrontend.vercel.app";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://culthivefrontend.vercel.app" || "http://localhost:3001";
 
 // models nécessaires
 const User = require("./models/User");
 const List = require("./models/List");
-
-
 
 // Définition des relations entre les modèles
 List.belongsTo(User, { foreignKey: "userId" }); // Une liste appartient à un utilisateur
@@ -34,7 +32,7 @@ const app = express(); // Création de l'instance Express
 // Middleware CORS pour permettre l'accès depuis le frontend (port 3001)
 app.use(
   cors({
-    origin: API_URL,
+    origin: [API_URL],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   })
 );
