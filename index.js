@@ -39,6 +39,8 @@ app.use(
   })
 );
 
+app.options('*', cors()); // Cela permet de gérer les requêtes preflight
+
 app.use(express.json()); // Middleware pour parser le corps en JSON
 
 // Enregistrement des différentes routes
