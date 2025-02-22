@@ -53,11 +53,6 @@ app.use("/api/search", searchRoutes);
 app.use("/api/stripe", stripeRoutes);
 app.use("/api/admin", adminRoutes);
 
-app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: 'ok', message: 'Backend is running' });
-});
-
-
 // Définition du port du serveur, soit celui dans le fichier .env ou 3000 par défaut
 const PORT = process.env.PORT || 3000;
 
