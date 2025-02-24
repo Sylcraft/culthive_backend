@@ -19,7 +19,7 @@ module.exports = {
   },
   production: process.env.DATABASE_URL
   ? {
-      url: process.env.DATABASE_URL,  // Utilisation de l'URL de production
+      url: process.env.DATABASE_URL, 
       dialect: "mysql",
       dialectOptions: {
         ssl: {

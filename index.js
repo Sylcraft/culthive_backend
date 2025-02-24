@@ -54,7 +54,7 @@ app.use("/api/stripe", stripeRoutes);
 app.use("/api/admin", adminRoutes);
 
 // Définition du port du serveur, soit celui dans le fichier .env ou 3000 par défaut
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000 || 8080;
 
 // Route de test
 app.get("/", (req, res) => {
@@ -67,7 +67,7 @@ sequelize
   .then(() => {
     console.log("BDD synchronisée");
     app.listen(PORT, () => {
-      console.log(`Serveur backend lancé sur http://localhost:${PORT}`);
+      console.log(`Serveur backend lancé sur le port ${PORT}`);
     });
   })
   .catch((error) => {
