@@ -16,7 +16,7 @@ if (env === "production" && process.env.DATABASE_URL) {
         rejectUnauthorized: false,
       },
     },
-  });
+  }); 
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
@@ -24,6 +24,7 @@ if (env === "production" && process.env.DATABASE_URL) {
     dialect: config.dialect,
   });
 }
+
 
 async function testConnection() {
   try {
