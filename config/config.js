@@ -16,7 +16,7 @@ module.exports = {
     dialect: process.env.DB_DIALECT
   },
   production: {
-    use_env_variable: "mysql://root:PkupeZTNeNGCHURjtxeTRrNnQuIprlGk@interchange.proxy.rlwy.net:50038/railway",
+    use_env_variable: "DATABASE_URL",
     dialect: "mysql",
     dialectOptions: {
       ssl: {
