@@ -40,7 +40,7 @@ app.use(
   cors({
     origin: [
     'http://localhost:3001', 
-    'https://culthive-frontend.vercel.app'
+    'https://culthive-frontend.vercel.app:8080'
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ['Content-Type', 'Authorization'],
