@@ -7,8 +7,6 @@ const config = require("../config/config")[env];
 
 let sequelize;
 
-console.log("DATABASE_URL:", process.env.DATABASE_URL);
-
 if (env === "production" && process.env.DATABASE_URL) {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: "mysql",
