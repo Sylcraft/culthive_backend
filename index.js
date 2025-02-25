@@ -29,21 +29,24 @@ User.hasMany(List, { foreignKey: "userId" }); // Un utilisateur peut avoir plusi
 
 const app = express(); // Création de l'instance Express
 
-// Middleware CORS pour permettre l'accès depuis le frontend (port 3001)
+// Log toutes les requêtes pour voir ce qui arrive
+app.use((req, res, next) => {
+  console.log(`${req.method} request to ${req.url}`);
+  next();  // Passe à la suite des middlewares
+});
+
+// Middleware CORS pour permettre l'accès depuis le frontend 
 app.use(
   cors({
     origin: [
     'http://localhost:3001', 
-    'https://culthive-frontend.vercel.app',
-    'https://vercel.com/sylvains-projects-d0f6a75c/culthive-frontend/7RdXv12XayYdFS1KG1YqoDjAbF14',
+    'https://culthive-frontend.vercel.app'
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 );
-
-app.options('*', cors());
 
 app.use(express.json()); // Middleware pour parser le corps en JSON
 
