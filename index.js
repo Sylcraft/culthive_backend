@@ -40,7 +40,7 @@ app.use(
   cors({
     origin: [
     'http://localhost:3001', 
-    'https://culthive-frontend.vercel.app:8080'
+    'https://culthive-frontend.vercel.app'
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -61,7 +61,7 @@ app.use("/api/stripe", stripeRoutes);
 app.use("/api/admin", adminRoutes);
 
 // Définition du port du serveur, soit celui dans le fichier .env ou 3000 par défaut
-const PORT = process.env.PORT || 3000 || 8080;
+const PORT = process.env.PORT || 3000;
 
 // Route de test
 app.get("/", (req, res) => {
