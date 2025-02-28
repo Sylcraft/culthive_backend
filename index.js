@@ -17,7 +17,6 @@ const adminRoutes = require("./routes/adminRoutes");
 
 // CORS pour autoriser les requêtes entre le frontend et le backend
 const cors = require("cors");
-// const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://culthive-frontend.vercel.app" || "http://localhost:3001";
 
 // models nécessaires
 const User = require("./models/User");
@@ -38,27 +37,14 @@ app.use((req, res, next) => {
 // Middleware CORS pour permettre l'accès depuis le frontend 
 app.use(
   cors({
-    origin: [
-    'http://localhost:3001', 
-    'https://culthive-frontend.vercel.app'
-    ],
+    origin: process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : "*",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 );
 
-console.log("Middleware CORS appliqué");
-
 app.use(express.json()); // Middleware pour parser le corps en JSON
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://culthive-frontend.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
 
 // Enregistrement des différentes routes
 app.use("/api", authRoutes);
