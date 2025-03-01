@@ -7,7 +7,11 @@ const axios = require("axios");
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY; // Charge la clé depuis l'environnement
 
-// Fonction pour ajouter une œuvre à une liste
+/**
+ * Ajoute une œuvre (film ou série) à la liste d'un utilisateur (watchlist ou favorites).
+ * @param {Object} req - Requête HTTP contenant userId, workId, type et workType.
+ * @param {Object} res - Réponse HTTP retournant un message de confirmation ou d'erreur.
+ */
 exports.addToList = async (req, res) => {
   try {
     // Extraction des données envoyées dans le corps de la requête
@@ -53,7 +57,11 @@ exports.addToList = async (req, res) => {
   }
 };
 
-// Fonction pour supprimer une œuvre d'une liste
+/**
+ * Supprime une œuvre d'une liste utilisateur (watchlist ou favorites).
+ * @param {Object} req - Requête HTTP contenant userId, workId et type.
+ * @param {Object} res - Réponse HTTP retournant un message de confirmation ou d'erreur.
+ */
 exports.removeFromList = async (req, res) => {
   try {
     // Extraction des données envoyées dans le corps de la requête
@@ -74,7 +82,11 @@ exports.removeFromList = async (req, res) => {
   }
 };
 
-// Fonction pour récupérer une liste spécifique d'un utilisateur
+/**
+ * Récupère une liste spécifique (watchlist ou favorites) d'un utilisateur.
+ * @param {Object} req - Requête HTTP contenant userId et type en query params.
+ * @param {Object} res - Réponse HTTP retournant la liste des œuvres.
+ */
 exports.getList = async (req, res) => {
   try {
     // Extraction des paramètres de la requête
@@ -90,7 +102,11 @@ exports.getList = async (req, res) => {
   }
 };
 
-// Fonction pour récupérer toutes les listes d'un utilisateur (watchlist et favorites)
+/**
+ * Récupère toutes les listes d'un utilisateur (watchlist et favorites) et les classe par type d'œuvre.
+ * @param {Object} req - Requête HTTP contenant userId en query params.
+ * @param {Object} res - Réponse HTTP retournant les listes classées.
+ */
 exports.getUserLists = async (req, res) => {
   try {
     const { userId } = req.query;
@@ -146,7 +162,11 @@ exports.getUserLists = async (req, res) => {
   }
 };
 
-// Fonction pour récupérer les détails d'une œuvre (film ou série) à partir de TMDB
+/**
+ * Récupère les détails d'une œuvre (film ou série) depuis l'API TMDB.
+ * @param {Object} req - Requête HTTP contenant workId et workType en paramètres.
+ * @param {Object} res - Réponse HTTP retournant les détails de l'œuvre.
+ */
 exports.getWorkDetails = async (req, res) => {
   const { workId, workType } = req.params;
 

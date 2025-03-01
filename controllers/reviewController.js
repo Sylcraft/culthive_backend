@@ -2,7 +2,12 @@
 const User = require("../models/User");
 const Review = require("../models/Review");
 
-// Créer un avis
+/**
+ * Crée un avis sur une œuvre.
+ * Vérifie si l'utilisateur existe avant de créer un avis.
+ * @param {Object} req - Requête HTTP contenant les détails de l'avis.
+ * @param {Object} res - Réponse HTTP retournant l'avis créé ou un message d'erreur.
+ */
 exports.createReview = async (req, res) => {
   try {
     const userId = req.user.id; // On récupère l'ID de l'utilisateur à partir du token décodé
@@ -32,7 +37,11 @@ exports.createReview = async (req, res) => {
   }
 };
 
-// Récupérer les avis d'une œuvre spécifique
+/**
+ * Récupère tous les avis associés à une œuvre spécifique.
+ * @param {Object} req - Requête HTTP contenant l'ID de l'œuvre dans les paramètres.
+ * @param {Object} res - Réponse HTTP retournant la liste des avis ou un message d'erreur.
+ */
 exports.getReviewsByWork = async (req, res) => {
   try {
     const { workId } = req.params;
@@ -54,7 +63,12 @@ exports.getReviewsByWork = async (req, res) => {
   }
 };
 
-// Modifier un avis
+/**
+ * Met à jour un avis existant.
+ * Vérifie si l'utilisateur est bien l'auteur de l'avis avant modification.
+ * @param {Object} req - Requête HTTP contenant l'ID de l'avis et les nouveaux détails.
+ * @param {Object} res - Réponse HTTP retournant l'avis mis à jour ou un message d'erreur.
+ */
 exports.updateReview = async (req, res) => {
   try {
     const { id } = req.params;
@@ -90,7 +104,12 @@ exports.updateReview = async (req, res) => {
   }
 };
 
-// Supprimer un avis
+/**
+ * Supprime un avis existant.
+ * Vérifie que l'utilisateur est bien l'auteur avant suppression.
+ * @param {Object} req - Requête HTTP contenant l'ID de l'avis à supprimer.
+ * @param {Object} res - Réponse HTTP confirmant la suppression ou renvoyant une erreur.
+ */
 exports.deleteReview = async (req, res) => {
   try {
     const { id } = req.params;
